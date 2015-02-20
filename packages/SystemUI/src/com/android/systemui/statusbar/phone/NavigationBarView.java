@@ -57,6 +57,8 @@ import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.GestureDetector;
+import android.view.*;
 import android.view.inputmethod.InputMethodManager;
 import android.view.accessibility.AccessibilityManager;
 import android.view.accessibility.AccessibilityManager.TouchExplorationStateChangeListener;
@@ -179,6 +181,8 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
     private OnVerticalChangedListener mOnVerticalChangedListener;
     private boolean mIsLayoutRtl;
     private boolean mDelegateIntercepted;
+
+    private GestureDetector mDoubleTapGesture;
 
     private class NavTransitionListener implements TransitionListener {
         private boolean mBackTransitioning;
@@ -351,6 +355,17 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
 
         mKgm = (KeyguardManager)
                 mContext.getSystemService(Context.KEYGUARD_SERVICE);
+
+        mDoubleTapGesture = new GestureDetector(mContext,
+                new GestureDetector.SimpleOnGestureListener() {
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+                if (pm != null) pm.goToSleep(e.getEventTime());
+                return true;
+            }
+        });
+
     }
 
     @Override
@@ -399,6 +414,10 @@ public class NavigationBarView extends LinearLayout implements BaseStatusBar.Nav
             boolean ret = mDelegateHelper.onInterceptTouchEvent(event);
             if (ret) return true;
         }
+        if (Settings.System.getInt(mContext.getContentResolver(),
+                    Settings.System.DOUBLE_TAP_SLEEP_NAVBAR, 0) == 1)
+            mDoubleTapGesture.onTouchEvent(event);
+
         return super.onTouchEvent(event);
     }
 

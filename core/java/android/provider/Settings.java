@@ -4014,6 +4014,12 @@ public final class Settings {
         public static final String VOLUME_PANEL_EXPANDED = "volume_link_expanded";
 
         /**
+         * Enable navigation bar double tap gesture on to put device to sleep
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_NAVBAR = "double_tap_sleep_navbar";
+
+        /**
          * Whether the notification light will be allowed when in zen mode during downtime
          * @hide
          */
