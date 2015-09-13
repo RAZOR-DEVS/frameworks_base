@@ -3633,6 +3633,12 @@ public final class Settings {
          * @hide
          */
         public static final String DOUBLE_TAP_SLEEP_GESTURE = "double_tap_sleep_gesture";
+        
+        /**
+         * Enable double tap gesture anywhere on the lock screen put device to sleep
+         * @hide
+         */
+        public static final String DOUBLE_TAP_SLEEP_ANYWHERE = "double_tap_sleep_anywhere";
 
         /**
          * Navigation bar button color
@@ -3688,6 +3694,13 @@ public final class Settings {
          * @hide
          */
         public static final String NAVIGATION_BAR_CONFIG = "navigation_bar_config";
+
+        /**
+         * Config for advanced power menu
+         *
+         * @hide
+         */
+        public static final String POWER_MENU_CONFIG = "power_menu_config";
 
         /**
          * Wether the navbar menu button is on the left/right/both
@@ -3785,6 +3798,12 @@ public final class Settings {
          * @hide
          */
         public static final String RECENT_CARD_TEXT_COLOR = "recent_card_text_color";
+
+        /**
+         * Show search bar in recents
+         * @hide
+         */
+        public static final String RECENTS_SHOW_SEARCH_BAR = "recents_show_search_bar";
 
         /**
          * Color temperature of the display during the day
@@ -4317,6 +4336,8 @@ public final class Settings {
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_ENABLED);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_VISIBLE);
             MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED);
+            MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_GESTURE_ENABLED);
+            MOVED_TO_LOCK_SETTINGS.add(Secure.LOCK_GESTURE_VISIBLE);
 
             MOVED_TO_GLOBAL = new HashSet<String>();
             MOVED_TO_GLOBAL.add(Settings.Global.ADB_ENABLED);
@@ -5006,6 +5027,12 @@ public final class Settings {
         public static final String INSTALL_NON_MARKET_APPS = "install_non_market_apps";
 
         /**
+         * Long press on lock screen lock icon to sleep
+         * @hide
+         */
+        public static final String LONG_PRESS_LOCK_ICON_TO_SLEEP = "long_press_lock_icon_to_sleep";
+
+        /**
          * Comma-separated list of location providers that activities may access. Do not rely on
          * this value being present in settings.db or on ContentObserver notifications on the
          * corresponding Uri.
@@ -5094,6 +5121,18 @@ public final class Settings {
         @Deprecated
         public static final String
                 LOCK_PATTERN_TACTILE_FEEDBACK_ENABLED = "lock_pattern_tactile_feedback_enabled";
+
+        /**
+         * Whether autolock is enabled (0 = false, 1 = true)
+         * @hide
+         */
+        public static final String LOCK_GESTURE_ENABLED = "lock_gesture_autolock";
+
+        /**
+         * Whether lock gesture is visible as user enters (0 = false, 1 = true)
+         * @hide
+         */
+        public static final String LOCK_GESTURE_VISIBLE = "lock_gesture_visible_pattern";
 
         /**
          * This preference allows the device to be locked given time after screen goes off,
