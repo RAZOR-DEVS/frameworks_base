@@ -4083,7 +4083,7 @@ public final class Settings {
 	 * This should be a string of packages separated by |
 	 * @hide
 	 */
-        public static final String WHITELIST_APP_CIRCLE_BAR = "whitelist_app_circle_bar"
+        public static final String WHITELIST_APP_CIRCLE_BAR = "whitelist_app_circle_bar";
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings
